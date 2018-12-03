@@ -8,7 +8,7 @@ namespace UserSystemApi.Models
 {
     public class UserContext : DbContext
     {
-        public UserContext() : base()
+        public UserContext() : base("User")
         {
 
         }
