@@ -10,17 +10,29 @@ namespace UserSystemApi.Models
     public class User
     {
         [Key]
+        [Required]
         public long UserID { get; set; }
-        [StringLength(16)]
+        [StringLength(50)]
         [Index(IsUnique = true)]
         [Required]
         public string UserName { get; set; }
         //TODO: encoding
         [Required]
+        [StringLength(128)]
         public string Password { get; set; }
-        public string NickName { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string Firstname { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string Lastname { get; set; }
+        [Required]
         public string Email { get; set; }
-        public string MobilePhone { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        [StringLength(50)]
+        public string Mobile { get; set; }
+        [StringLength(50)]
+        public string Phone { get; set; }
 
     }
 }
