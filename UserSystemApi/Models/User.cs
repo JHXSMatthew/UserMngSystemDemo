@@ -13,9 +13,11 @@ namespace UserSystemApi.Models
         public long UserID { get; set; }
         [StringLength(16)]
         [Index(IsUnique = true)]
+        [Required]
         public string UserName { get; set; }
         //TODO: encoding
-        public string Password { get; set; }    
+        [Required]
+        public string Password { get; set; }
         public string NickName { get; set; }
         public string Email { get; set; }
         public string MobilePhone { get; set; }
