@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { USERS } from '../mock-users';
 
 import {MatPaginator, MatTableDataSource} from '@angular/material';
+import { User } from '../user';
+import { UserService } from '../user.service';
 
 
 @Component({
@@ -13,29 +15,24 @@ export class UsersComponent implements OnInit {
 
   displayedColumns = ["UserId", "UserName", "Firstname", "Lastname", "Email", "Mobile", "Phone", "DateOfBirth"]
 
-  dataSource = new MatTableDataSource<User>(USERS);
+  dataSource = {}
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor() { 
-    this.dataSource.paginator = this.paginator;
+  constructor(private userService: UserService) { 
 
   }
+
+  getUsers(): void{
+    this.userService.getUsers()
+      .subscribe(value => this.dataSource = new MatTableDataSource<User>(value));
+  }
+ 
 
   ngOnInit() {
+    this.getUsers();
   }
 
 }
 
 
-export class User {
-  UserId: number;
-  UserName: string;
-  Password?: string;
-  Firstname: string;
-  Lastname: string;
-  Email: string;
-  DateOfBirth?: string;
-  Mobile?: string;
-  Phone?: string;
-}

@@ -6,7 +6,15 @@ import { AppComponent } from './app.component';
 import { UsersComponent } from './users/users.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {MatButtonModule, MatCheckboxModule, MatTableModule, MatPaginatorModule, MatDialogModule, MatInputModule, MatFormFieldModule} from '@angular/material';
+import {MatButtonModule, 
+  MatCheckboxModule, 
+  MatTableModule, 
+  MatPaginatorModule, 
+  MatDialogModule, 
+  MatInputModule, 
+  MatFormFieldModule,
+  MatDatepickerModule,
+  MatNativeDateModule} from '@angular/material';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { UserDetailDialog } from './user-detail-dialog/user-detail-dialog';
 
@@ -28,7 +36,9 @@ import { UserDetailDialog } from './user-detail-dialog/user-detail-dialog';
     MatDialogModule,
     MatInputModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   entryComponents: [
     UserDetailDialog

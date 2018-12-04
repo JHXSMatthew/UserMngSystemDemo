@@ -1,4 +1,4 @@
-import { User } from './users/users.component'
+import { User } from './user'
 
 export const USERS : User[]  = [
   { UserId: 1, UserName: "Matthew", Firstname: "Matthew", Lastname: "Yu", Email: "b@gmail.com"},
