@@ -46,7 +46,14 @@ namespace UserSystemApi.Controllers
 
             if (id != user.UserID)
             {
-                return BadRequest();
+                ModelState.AddModelError("UserId", "User Id is immutable once user created.");
+                return BadRequest(ModelState);
+            }
+
+            if (db.Entry(user).Entity.UserName != user.UserName)
+            {
+                ModelState.AddModelError("UserName", "UserName cannot be modified");
+                return BadRequest(ModelState);
             }
 
             db.Entry(user).State = EntityState.Modified;
