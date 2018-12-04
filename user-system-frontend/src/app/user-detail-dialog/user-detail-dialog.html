@@ -1,0 +1,28 @@
+<form class="example-form">
+   
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.UserName" name="userName"  placeholder="UserName">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.Firstname" name="firstName"  placeholder="Fist Name">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.Lastname" name="lastName"  placeholder="Last Name">
+  </mat-form-field>
+  
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.Email" name="email"  placeholder="Email">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.Mobile" name="mobile"  placeholder="Mobile">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.Phone" name="phone"  placeholder="Phone">
+  </mat-form-field>
+  
+  <div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+  </div>
+</form>

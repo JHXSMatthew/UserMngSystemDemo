@@ -1,5 +1,5 @@
 
-<table mat-table [dataSource]="users">
+<table mat-table [dataSource]="dataSource">
   <ng-container matColumnDef="UserId">
     <th mat-header-cell *matHeaderCellDef> UserId </th>
     <td mat-cell *matCellDef="let element"> {{element.UserId}} </td>
@@ -30,5 +30,6 @@
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </table>
 

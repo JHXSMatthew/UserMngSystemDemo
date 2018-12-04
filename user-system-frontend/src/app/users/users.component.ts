@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { USERS } from '../mock-users';
+
+import {MatPaginator, MatTableDataSource} from '@angular/material';
+
 
 @Component({
   selector: 'app-users',
@@ -8,11 +11,16 @@ import { USERS } from '../mock-users';
 })
 export class UsersComponent implements OnInit {
 
-  users = USERS
-
   displayedColumns = ["UserId", "UserName", "Firstname", "Lastname", "Email", "Mobile", "Phone"]
 
-  constructor() { }
+  dataSource = new MatTableDataSource<User>(USERS);
+  
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  constructor() { 
+    this.dataSource.paginator = this.paginator;
+
+  }
 
   ngOnInit() {
   }
