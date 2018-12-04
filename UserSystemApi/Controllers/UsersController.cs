@@ -79,6 +79,12 @@ namespace UserSystemApi.Controllers
                 return BadRequest(ModelState);
             }
 
+            if (db.User.Any(o => o.UserName == user.UserName))
+            {
+                ModelState.AddModelError("UserName", "Duplicate User Name");
+                return BadRequest(ModelState);
+            }
+
             db.User.Add(user);
             db.SaveChanges();
 

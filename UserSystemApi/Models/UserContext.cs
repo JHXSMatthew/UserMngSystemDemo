@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Web;
 
 namespace UserSystemApi.Models
@@ -12,6 +13,7 @@ namespace UserSystemApi.Models
         {
 
         }
+
 
         public DbSet<User> User { get; set; }
     }

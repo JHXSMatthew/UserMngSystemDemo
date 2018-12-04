@@ -30,7 +30,7 @@ namespace UserSystemApi.Models
         [DataType(DataType.EmailAddress)]
         [EmailAddress]
         public string Email { get; set; }
-        public DateTime DateOfBirth { get; set; };
+        public DateTime DateOfBirth { get; set; } = DateTime.MaxValue;
         [StringLength(50)]
         public string Mobile { get; set; }
         [StringLength(50)]

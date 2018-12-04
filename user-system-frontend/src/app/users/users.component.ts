@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { USERS } from '../mock-users';
 
 @Component({
   selector: 'app-users',
@@ -7,11 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersComponent implements OnInit {
 
-  hello = "hi"
+  users = USERS
+
+  displayedColumns = ["UserId", "UserName", "Firstname", "Lastname", "Email", "Mobile", "Phone"]
 
   constructor() { }
 
   ngOnInit() {
   }
 
+}
+
+
+export class User {
+  UserId: number;
+  UserName: string;
+  Password?: string;
+  Firstname: string;
+  Lastname: string;
+  Email: string;
+  DateOfBirth?: string;
+  Mobile?: string;
+  Phone?: string;
 }
