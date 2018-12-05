@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, ErrorStateMatcher } from '@angular/material';
-import { User } from '../user';
+import { User, UserDetailViewModel } from '../user';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 
 @Component({
@@ -12,13 +12,21 @@ import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/fo
 export class UserDetailDialog {
 
   mode="Create a new user"
+  data={}
   matcher= new ValidationMatcher();
 
   
   constructor(
     public dialogRef: MatDialogRef<UserDetailDialog>,
 
-    @Inject(MAT_DIALOG_DATA) public data: User) {}
+    @Inject(MAT_DIALOG_DATA) public viewModel: UserDetailViewModel) {
+      if(viewModel.mode === 'edit'){
+        this.mode="Modify the user detail"
+      }else{
+        this.mode="Create a new user"
+      }
+      this.data = viewModel.data;
+    }
 
   onNoClick(): void {
     this.dialogRef.close();

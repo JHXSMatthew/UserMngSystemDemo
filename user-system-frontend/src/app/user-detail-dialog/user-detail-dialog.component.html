@@ -15,7 +15,7 @@
       Password is <strong>required</strong>
     </mat-error>
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field layout-margin>
     <input matInput [(ngModel)]="data.Firstname" name="firstName"  placeholder="Fist Name *" [formControl]="firstNameFormControl" [errorStateMatcher]="matcher">
     <mat-error *ngIf="firstNameFormControl.hasError('required')">
       First name is <strong>required</strong>

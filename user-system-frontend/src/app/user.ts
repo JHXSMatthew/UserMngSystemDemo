@@ -10,4 +10,12 @@ export class User {
   DateOfBirth?: string;
   Mobile?: string;
   Phone?: string;
+
+ 
+}
+
+
+export class UserDetailViewModel {
+  data: User;
+  mode: string
 }

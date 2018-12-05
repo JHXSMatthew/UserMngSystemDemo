@@ -16,8 +16,8 @@ import {MatButtonModule,
   MatDatepickerModule,
   MatNativeDateModule,
   ErrorStateMatcher,
+  MatIconModule,
   ShowOnDirtyErrorStateMatcher} from '@angular/material';
-import { CreateUserComponent } from './create-user/create-user.component';
 import { UserDetailDialog } from './user-detail-dialog/user-detail-dialog.component';
 
 
@@ -25,7 +25,6 @@ import { UserDetailDialog } from './user-detail-dialog/user-detail-dialog.compon
   declarations: [
     AppComponent,
     UsersComponent,
-    CreateUserComponent,
     UserDetailDialog
   ],
   imports: [
@@ -41,7 +40,8 @@ import { UserDetailDialog } from './user-detail-dialog/user-detail-dialog.compon
     FormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatIconModule
   ],
   entryComponents: [
     UserDetailDialog
