@@ -1,0 +1,59 @@
+<form class="user-form">
+  <h4>{{mode}}</h4> 
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.UserName" name="userName"  placeholder="UserName *" [formControl]="userNameFormControl" [errorStateMatcher]="matcher">
+    <mat-error *ngIf="userNameFormControl.hasError('required')">
+        UserName is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.Password" name="password"  placeholder="Password *" [formControl]="passwordFormControl" [errorStateMatcher]="matcher">
+    <mat-error *ngIf="passwordFormControl.hasError('pattern') && !passwordFormControl.hasError('required')">
+      Password should be minimum 8 characters in length and contain both letters and numbers, at least one uppercase letter.
+    </mat-error>
+    <mat-error *ngIf="passwordFormControl.hasError('required')">
+      Password is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.Firstname" name="firstName"  placeholder="Fist Name *" [formControl]="firstNameFormControl" [errorStateMatcher]="matcher">
+    <mat-error *ngIf="firstNameFormControl.hasError('required')">
+      First name is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.Lastname" name="lastName"  placeholder="Last Name *" [formControl]="lastNameFormControl" [errorStateMatcher]="matcher">
+    <mat-error *ngIf="lastNameFormControl.hasError('required')">
+      Last name is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+  
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.Email" name="email"  placeholder="Email *" [formControl]="emailFormControl" [errorStateMatcher]="matcher">
+    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="emailFormControl.hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.Mobile" name="mobile"  placeholder="Mobile">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.Phone" name="phone"  placeholder="Phone">
+  </mat-form-field>
+
+  <mat-form-field>
+      <input matInput [matDatepicker]="picker"  [(ngModel)]="data.DateOfBirth" name="dateOfBirth" placeholder="Date Of Birth">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  <div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+    <button mat-button (click)="onNoClick()" cdkFocusInitial>Cancel</button>
+
+  </div>
+</form>

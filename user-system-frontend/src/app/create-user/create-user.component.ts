@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, } from '@angular/material';
-import { UserDetailDialog } from '../user-detail-dialog/user-detail-dialog';
+import { UserDetailDialog } from '../user-detail-dialog/user-detail-dialog.component';
 
 @Component({
   selector: 'app-create-user',
@@ -19,7 +19,7 @@ export class CreateUserComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(UserDetailDialog, {
-      width: '250px',
+      width: '600px',
       data: {}
     });
 

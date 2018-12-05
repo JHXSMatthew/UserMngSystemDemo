@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { AppComponent } from './app.component';
 import { UsersComponent } from './users/users.component';
@@ -14,9 +14,11 @@ import {MatButtonModule,
   MatInputModule, 
   MatFormFieldModule,
   MatDatepickerModule,
-  MatNativeDateModule} from '@angular/material';
+  MatNativeDateModule,
+  ErrorStateMatcher,
+  ShowOnDirtyErrorStateMatcher} from '@angular/material';
 import { CreateUserComponent } from './create-user/create-user.component';
-import { UserDetailDialog } from './user-detail-dialog/user-detail-dialog';
+import { UserDetailDialog } from './user-detail-dialog/user-detail-dialog.component';
 
 
 @NgModule({
@@ -38,12 +40,15 @@ import { UserDetailDialog } from './user-detail-dialog/user-detail-dialog';
     MatFormFieldModule,
     FormsModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    ReactiveFormsModule
   ],
   entryComponents: [
     UserDetailDialog
   ],
-  providers: [],
+  providers: [
+    {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
