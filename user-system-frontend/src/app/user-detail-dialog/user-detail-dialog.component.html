@@ -1,4 +1,4 @@
-<form class="user-form">
+<form class="user-form" #userForm="ngForm">
   <h4>{{mode}}</h4> 
   <mat-form-field>
     <input matInput [(ngModel)]="data.UserName" name="userName"  placeholder="UserName *" [formControl]="userNameFormControl" [errorStateMatcher]="matcher">
@@ -52,7 +52,7 @@
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
   <div mat-dialog-actions>
-    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+    <button mat-button  [disabled]="!userForm.form.valid" (click)="onSubmit()" cdkFocusInitial>Ok</button>
     <button mat-button (click)="onNoClick()" cdkFocusInitial>Cancel</button>
 
   </div>

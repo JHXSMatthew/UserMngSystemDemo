@@ -15,6 +15,7 @@ export class UserDetailDialog {
   data={}
   matcher= new ValidationMatcher();
 
+  loading=false
   
   constructor(
     public dialogRef: MatDialogRef<UserDetailDialog>,
@@ -33,6 +34,10 @@ export class UserDetailDialog {
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  onSubmit(): void {
+    this.dialogRef.close(this.data);
   }
 
   emailFormControl = new FormControl('', [
