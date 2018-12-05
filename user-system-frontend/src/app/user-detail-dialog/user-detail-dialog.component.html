@@ -7,7 +7,7 @@
     </mat-error>
   </mat-form-field>
   <mat-form-field>
-    <input matInput [(ngModel)]="data.Password" name="password"  placeholder="Password *" [formControl]="passwordFormControl" [errorStateMatcher]="matcher">
+    <input matInput [(ngModel)]="data.Password" type="password" name="password"  placeholder="Password *" [formControl]="passwordFormControl" [errorStateMatcher]="matcher">
     <mat-error *ngIf="passwordFormControl.hasError('pattern') && !passwordFormControl.hasError('required')">
       Password should be minimum 8 characters in length and contain both letters and numbers, at least one uppercase letter.
     </mat-error>
