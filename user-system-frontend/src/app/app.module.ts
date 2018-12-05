@@ -20,6 +20,8 @@ import {MatButtonModule,
   ShowOnDirtyErrorStateMatcher} from '@angular/material';
 import { UserDetailDialog } from './user-detail-dialog/user-detail-dialog.component';
 
+import { HttpClientModule }    from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { UserDetailDialog } from './user-detail-dialog/user-detail-dialog.compon
     MatDatepickerModule,
     MatNativeDateModule,
     ReactiveFormsModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule
   ],
   entryComponents: [
     UserDetailDialog

@@ -16,7 +16,7 @@ export class UsersComponent implements OnInit {
 
   displayedColumns = ["UserId", "UserName", "Firstname", "Lastname", "Email", "Mobile", "Phone", "DateOfBirth", "Actions"]
 
-  dataSource = {}
+  dataSource = []
 
   newUser = {}
 
@@ -28,7 +28,25 @@ export class UsersComponent implements OnInit {
 
   getUsers(): void{
     this.userService.getUsers()
-      .subscribe(value => this.dataSource = new MatTableDataSource<User>(value));
+      .subscribe(value => this.dataSource = value);
+  }
+
+  updateUser(user): void{
+    this.userService.updateUser(user)
+    .subscribe(() => {
+      this.dataSource = this.dataSource.map((e)=>{
+        if(e.UserId === user.UserId){
+          return user
+        }else{
+          return e
+        }
+      });
+    });
+  }
+
+  deleteUser(user : User): void{
+    this.dataSource = this.dataSource.filter(u => u!==  user)
+    this.userService.deleteUser(user).subscribe();
   }
 
   openDialog(data, mode="create"): void {
