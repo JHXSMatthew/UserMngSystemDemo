@@ -29,18 +29,28 @@ export class UserService {
   }
 
   deleteUser(user : User | number): Observable<User> {
-    const id = typeof user === 'number' ? user : user.UserId;
+    const id = typeof user === 'number' ? user : user.UserID;
     const url = `${this.baseUrl}/${id}`
-    return this.http.delete<User>(url, httpOptions).pipe(
+    return this.http.delete<User>(url,httpOptions).pipe(
       tap(_ => console.log(`deleted user id=${id}`)),
       catchError(this.handleError<User>('deleteUser'))
     )
   }
 
   updateUser(user : User) : Observable<any>{
-    return this.http.put(this.baseUrl, user, httpOptions).pipe(
-      tap(_ => console.log(`updated user id=${user.UserId}`)),
+    const url = `${this.baseUrl}/${user.UserID}`
+
+    return this.http.put(url , user, httpOptions).pipe(
+      tap(_ => console.log(`updated user id=${user.UserID}`)),
       catchError(this.handleError<any>('updateUser'))
+    );
+  }
+
+  
+  createUser(user : User) : Observable<any>{
+    return this.http.post(this.baseUrl, user, httpOptions).pipe(
+      tap(_ => console.log(`created user id=${user.UserID}`)),
+      catchError(this.handleError<any>('createUser'))
     );
   }
 

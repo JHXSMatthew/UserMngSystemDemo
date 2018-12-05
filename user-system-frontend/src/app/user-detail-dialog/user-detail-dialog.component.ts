@@ -20,12 +20,15 @@ export class UserDetailDialog {
     public dialogRef: MatDialogRef<UserDetailDialog>,
 
     @Inject(MAT_DIALOG_DATA) public viewModel: UserDetailViewModel) {
+      if(viewModel.data){
+        this.data = viewModel.data;
+      }
+
       if(viewModel.mode === 'edit'){
         this.mode="Modify the user detail"
       }else{
         this.mode="Create a new user"
       }
-      this.data = viewModel.data;
     }
 
   onNoClick(): void {
@@ -41,7 +44,7 @@ export class UserDetailDialog {
     Validators.maxLength(255),
     Validators.required,
     //[lower, digit, upper] 8+
-    Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$")
+    Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[A-Za-z\d].{7,}')
   ])
 
   userNameFormControl  = new FormControl('', [

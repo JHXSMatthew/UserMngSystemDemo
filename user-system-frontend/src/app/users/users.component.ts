@@ -14,11 +14,10 @@ import { UserDetailDialog } from '../user-detail-dialog/user-detail-dialog.compo
 })
 export class UsersComponent implements OnInit {
 
-  displayedColumns = ["UserId", "UserName", "Firstname", "Lastname", "Email", "Mobile", "Phone", "DateOfBirth", "Actions"]
+  displayedColumns = ["UserID", "UserName", "Firstname", "Lastname", "Email", "Mobile", "Phone", "DateOfBirth", "Actions"]
 
-  dataSource = []
+  dataSource = new MatTableDataSource<User>()
 
-  newUser = {}
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -28,14 +27,14 @@ export class UsersComponent implements OnInit {
 
   getUsers(): void{
     this.userService.getUsers()
-      .subscribe(value => this.dataSource = value);
+      .subscribe(value => this.dataSource.data = value);
   }
 
   updateUser(user): void{
     this.userService.updateUser(user)
     .subscribe(() => {
-      this.dataSource = this.dataSource.map((e)=>{
-        if(e.UserId === user.UserId){
+      this.dataSource.data = this.dataSource.data.map((e)=>{
+        if(e.UserID === user.UserID){
           return user
         }else{
           return e
@@ -44,14 +43,23 @@ export class UsersComponent implements OnInit {
     });
   }
 
+  createUser(user) : void{
+    this.userService.createUser(user).subscribe((value)=>{
+      console.log(value)
+      if(value){
+        this.dataSource.data = [...this.dataSource.data, value];
+      }
+    })
+  }
+
   deleteUser(user : User): void{
-    this.dataSource = this.dataSource.filter(u => u!==  user)
+    this.dataSource.data = this.dataSource.data.filter(u => u!==  user)
     this.userService.deleteUser(user).subscribe();
   }
 
   openDialog(data, mode="create"): void {
     const dataWithMode = {
-      data,
+      data: {...data},
       mode
     }
     const dialogRef = this.dialog.open(UserDetailDialog, {
@@ -61,9 +69,12 @@ export class UsersComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log(result)
-      this.newUser = result;
+      if(mode === 'create'){
+        this.createUser(result);
+      }else{
+        this.updateUser(result);
+      }
+      console.log({mode,result})
     });
   }
 

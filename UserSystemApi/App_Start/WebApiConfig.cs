@@ -12,6 +12,7 @@ namespace UserSystemApi
         {
             // Web API configuration and services
             config.Filters.Add(new ValidateModelAttribute());
+            config.EnableCors();
             // Web API routes
             config.MapHttpAttributeRoutes();
 
